@@ -34,6 +34,5 @@ public class Usuario {
 
     // Um usuario pode ter varias despesas
     @OneToMany(mappedBy = "usuario")
-    @JsonIgnore
     private List<Despesa> despesas;
 }
