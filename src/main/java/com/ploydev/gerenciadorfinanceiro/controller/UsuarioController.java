@@ -5,6 +5,8 @@ import com.ploydev.gerenciadorfinanceiro.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -13,7 +15,6 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
-    // Criar o usuario
     @PostMapping
     public ResponseEntity<Usuario> novoUsuario(@RequestBody Usuario usuario){
         Usuario novoUsuario = usuarioService.novoUsuario(usuario);
@@ -22,6 +23,9 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.buscarPorId(id));
-
+    }
+    @GetMapping
+    public ResponseEntity<List<Usuario>> buscarTodosUsuarios(){
+        return ResponseEntity.ok(usuarioService.buscarTodosUsuario());
     }
 }

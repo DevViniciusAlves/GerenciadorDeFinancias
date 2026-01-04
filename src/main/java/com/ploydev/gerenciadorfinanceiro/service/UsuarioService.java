@@ -5,6 +5,8 @@ import com.ploydev.gerenciadorfinanceiro.model.Usuario;
 import com.ploydev.gerenciadorfinanceiro.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository; // DECLARANDO UMA DEPEDENCIA
@@ -27,5 +29,8 @@ public class UsuarioService {
     public Usuario buscarPorId(Long id){
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Esse usuario não existe"));
+    }
+    public List<Usuario> buscarTodosUsuario(){
+        return usuarioRepository.findAll();
     }
 }
